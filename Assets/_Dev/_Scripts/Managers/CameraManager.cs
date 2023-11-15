@@ -9,7 +9,7 @@ namespace Game.Managers
     {
         [Header("Components")]
         [SerializeField] private CinemachineVirtualCamera runningCam;
-        // [SerializeField] private CinemachineVirtualCamera closeLookUpCam;
+        [SerializeField] private CinemachineVirtualCamera closeLookUpCam;
 
         private CinemachineVirtualCamera _currentCam;
         private CinemachineBasicMultiChannelPerlin _noise;
@@ -17,18 +17,17 @@ namespace Game.Managers
 
         public void SetCamera(CameraType state)
         {
-            runningCam.Priority = state == CameraType.Running ? 10 : 0;
-            // closeLookUpCam.Priority = state == CameraType.CloseLookUp ? 10 : 0;
+            runningCam.Priority = state == CameraType.Follow ? 10 : 0;
+            closeLookUpCam.Priority = state == CameraType.CloseLookUp ? 10 : 0;
 
-            _currentCam = state == CameraType.Running ? runningCam : null;
-
-            if (_currentCam != null)
-                _noise = _currentCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            _currentCam = state == CameraType.Follow ? runningCam : closeLookUpCam;
         }
-
 
         public void ShakeCamera(float amplitude, float frequency, float duration)
         {
+            if (_currentCam != null)
+                _noise = _currentCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
             if (_noise == null)
             {
                 Debug.LogError($"Noise component is null! " +
@@ -60,7 +59,7 @@ namespace Game.Managers
 
     public enum CameraType
     {
-        Running,
-        // CloseLookUp,
+        Follow,
+        CloseLookUp,
     }
 }

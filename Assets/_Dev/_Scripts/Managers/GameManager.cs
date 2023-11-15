@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Game.Interfaces;
 using UnityEngine;
 using Zenject;
@@ -8,20 +9,21 @@ namespace Game.Managers
     public class GameManager : MonoBehaviour, IGameManager
     {
         [Inject] private ISceneController sceneController;
+        [Inject] private ICameraManager cameraManager;
 
         public event Action<GameState> OnBeforeStateChanged;
         public event Action<GameState> OnAfterStateChanged;
-        public GameState State { get; private set; }
+        public GameState State { get; private set; } = GameState.Playing;
 
 
-        #region UNITY EVENTS
-
-        private void Awake()
-        {
-            State = GameState.Playing;
-        }
-
-        #endregion
+        // #region UNITY EVENTS
+        //
+        // private void Awake()
+        // {
+        //     State = GameState.Playing;
+        // }
+        //
+        // #endregion
 
 
         #region PUBLIC METHODS
@@ -37,9 +39,13 @@ namespace Game.Managers
             {
                 case GameState.Playing:
                     break;
-                case GameState.Victorious:
+                case GameState.Win:
+                    cameraManager.SetCamera(CameraType.CloseLookUp);
+                    StartCoroutine(ProcessGameRestart());
                     break;
-                case GameState.Defeated:
+                case GameState.Fail:
+                    cameraManager.SetCamera(CameraType.CloseLookUp);
+                    StartCoroutine(ProcessGameRestart());
                     break;
             }
 
@@ -48,12 +54,19 @@ namespace Game.Managers
         }
 
         #endregion
+
+
+        private IEnumerator ProcessGameRestart()
+        {
+            yield return Helpers.BetterWaitForSeconds(4f);
+            sceneController.RestartScene();
+        }
     }
 
     public enum GameState
     {
         Playing,
-        Victorious,
-        Defeated
+        Win,
+        Fail
     }
 }

@@ -9,8 +9,6 @@ namespace Game.Player
     {
         [Inject] private IGameManager gameManager;
         
-        public bool IsDead { get; private set; }
-        
         private MovementHandler _movementHandler;
         private AnimationHandler _animationHandler;
         
@@ -38,13 +36,14 @@ namespace Game.Player
         
         public void ProcessVictorious()
         {
-            gameManager.ChangeState(GameState.Victorious);
+            gameManager.ChangeState(GameState.Win);
+            _animationHandler.UpdateBlendValue(0f);
         }
 
         public void ProcessDefeated()
         {
-            IsDead = true;
-            gameManager.ChangeState(GameState.Defeated);
+            gameManager.ChangeState(GameState.Fail);
+            _animationHandler.PlayDeathAnimation();
         }
 
         #endregion

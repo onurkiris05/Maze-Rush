@@ -8,28 +8,9 @@ namespace Game.Managers
     {
         #region PUBLIC METHODS
 
-        public void LoadNextScene()
+        public void RestartScene()
         {
-            var currentIndex = PlayerPrefs.GetInt("CurrentLevel", 0);
-            LoadScene(currentIndex + 1);
-        }
-
-        public void LoadScene(int sceneIndex)
-        {
-            if (sceneIndex > SceneManager.sceneCount)
-            {
-                Debug.Log("Scene index out of range. Loading very last scene!");
-                sceneIndex = SceneManager.sceneCount;
-            }
-
-            PlayerPrefs.SetInt("CurrentLevel", sceneIndex);
-            SceneManager.LoadScene(sceneIndex);
-        }
-
-        public bool CheckIsSceneLoaded()
-        {
-            var currentIndex = PlayerPrefs.GetInt("CurrentLevel", 0);
-            return SceneManager.GetActiveScene().buildIndex == currentIndex;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         #endregion

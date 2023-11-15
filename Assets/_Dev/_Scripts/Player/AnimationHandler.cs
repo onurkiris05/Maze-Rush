@@ -7,6 +7,7 @@ namespace Game.Player
         private PlayerController _player;
         private Animator _animator;
         private readonly string _blendParameter = "Blend";
+        private readonly string _deadTrigger = "Dead";
 
 
         private void Awake()
@@ -19,6 +20,11 @@ namespace Game.Player
         public void UpdateBlendValue(float magnitude)
         {
             _animator.SetFloat(_blendParameter, magnitude);
+        }
+
+        public void PlayDeathAnimation()
+        {
+            _animator.SetTrigger(_deadTrigger);
         }
     }
 }

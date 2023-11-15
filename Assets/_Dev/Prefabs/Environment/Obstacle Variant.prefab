@@ -107,7 +107,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6898255610917043319, guid: aad2f177bd9bd044a8632512f1d621e2, type: 3}
       propertyPath: m_Name
-      value: Obstacle
+      value: Obstacle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7667725282053930739, guid: aad2f177bd9bd044a8632512f1d621e2, type: 3}
       propertyPath: m_RootOrder

@@ -1,4 +1,8 @@
+using System;
+using Game.Interfaces;
+using Game.Managers;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Player
 {
@@ -7,8 +11,22 @@ namespace Game.Player
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float rotationSpeed = 10f;
 
+        [Inject] private IGameManager gameManager;
+
         private PlayerController _player;
         private Rigidbody _rb;
+        private bool _isPlaying = true;
+
+
+        private void OnEnable()
+        {
+            gameManager.OnAfterStateChanged += CheckState;
+        }
+
+        private void OnDisable()
+        {
+            gameManager.OnAfterStateChanged -= CheckState;
+        }
 
         private void Start()
         {
@@ -17,6 +35,12 @@ namespace Game.Player
 
         private void FixedUpdate()
         {
+            if (!_isPlaying)
+            {
+                _rb.velocity = Vector3.zero;
+                return;
+            }
+
             var horizontal = Input.GetAxisRaw("Horizontal");
             var vertical = Input.GetAxisRaw("Vertical");
             var movement = new Vector3(horizontal, 0f, vertical).normalized;
@@ -50,6 +74,11 @@ namespace Game.Player
             var movementMagnitude = movement.magnitude;
 
             _player.ProcessMovementMagnitude(movementMagnitude);
+        }
+
+        private void CheckState(GameState state)
+        {
+            _isPlaying = state == GameState.Playing;
         }
     }
 }
