@@ -109,6 +109,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8065484972279704787}
     m_Modifications:
+    - target: {fileID: 1203690119936268111, guid: b731e5732793d0540a283313940430c7, type: 3}
+      propertyPath: m_text
+      value: Congratulations!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203690119936268111, guid: b731e5732793d0540a283313940430c7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302864084501804657, guid: b731e5732793d0540a283313940430c7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1709470393236493066, guid: b731e5732793d0540a283313940430c7, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -301,6 +313,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317401390155680944, guid: e2989bba20d59b348ae5ec69a3f4e8c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223324104845692740, guid: e2989bba20d59b348ae5ec69a3f4e8c9, type: 3}
+      propertyPath: m_text
+      value: Failed!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223324104845692740, guid: e2989bba20d59b348ae5ec69a3f4e8c9, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394212478386892410, guid: e2989bba20d59b348ae5ec69a3f4e8c9, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5724609574074993409, guid: e2989bba20d59b348ae5ec69a3f4e8c9, type: 3}
