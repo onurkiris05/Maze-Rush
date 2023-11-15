@@ -1,0 +1,14 @@
+Guide: 	https://www.patreon.com/posts/quick-game-art-18245226
+
+Setup:
+1. Copy the shader and Liquid scripts.
+
+2. Create a material from the shader.
+
+3a. Copy your object, set it as a child, and scale it down a little, add glass material to the parent.
+
+3. Add liquid material to your container.
+
+4. Add the Liquid Script to your container (It’s set to ExecuteInEditMode, so it should work right away, just adjust the fillamount float)
+
+5. Control the distortion with the _WobbleX and _WobbleZ values from script.
