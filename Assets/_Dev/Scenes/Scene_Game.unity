@@ -2427,9 +2427,9 @@ Transform:
   - {fileID: 1237007588}
   - {fileID: 776860271}
   - {fileID: 1303133258}
-  - {fileID: 1849768463}
   - {fileID: 877695269}
   - {fileID: 1164101413}
+  - {fileID: 1849768463}
   - {fileID: 601888203}
   - {fileID: 351917639}
   - {fileID: 636126498}
@@ -3658,7 +3658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 205463137188651615, guid: e0ca7a3daaf700f47872cfc3b018576d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.06
+      value: -6.37
       objectReference: {fileID: 0}
     - target: {fileID: 205463137188651615, guid: e0ca7a3daaf700f47872cfc3b018576d, type: 3}
       propertyPath: m_LocalPosition.y
