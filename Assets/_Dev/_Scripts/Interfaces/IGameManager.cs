@@ -7,9 +7,7 @@ namespace Game.Interfaces
     {
         event Action<GameState> OnBeforeStateChanged;
         event Action<GameState> OnAfterStateChanged;
-        event Action OnLevelCompleted;
         GameState State { get; }
         void ChangeState(GameState newState);
-        int GetLevel();
     }
 }
