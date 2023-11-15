@@ -1,4 +1,3 @@
-using System;
 using Game.Interfaces;
 using Game.Managers;
 using UnityEngine;
@@ -17,6 +16,8 @@ namespace Game.Player
         private Rigidbody _rb;
         private bool _isPlaying = true;
 
+
+        #region UNITY EVENTS
 
         private void OnEnable()
         {
@@ -50,7 +51,17 @@ namespace Game.Player
             UpdateAnimationBlend(movement);
         }
 
+        #endregion
+
+
+        #region PUBLIC METHODS
+
         public void Init(PlayerController player) => _player = player;
+
+        #endregion
+
+
+        #region PRIVATE METHODS
 
         private void MovePlayer(Vector3 movement)
         {
@@ -80,5 +91,7 @@ namespace Game.Player
         {
             _isPlaying = state == GameState.Playing;
         }
+
+        #endregion
     }
 }

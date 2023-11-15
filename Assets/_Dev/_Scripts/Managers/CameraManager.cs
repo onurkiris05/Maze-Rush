@@ -15,6 +15,9 @@ namespace Game.Managers
         private CinemachineBasicMultiChannelPerlin _noise;
         private Coroutine _shakeCoroutine;
 
+
+        #region PUBLIC METHODS
+
         public void SetCamera(CameraType state)
         {
             runningCam.Priority = state == CameraType.Follow ? 10 : 0;
@@ -41,6 +44,11 @@ namespace Game.Managers
             _shakeCoroutine = StartCoroutine(ProcessCameraShake(amplitude, frequency, duration));
         }
 
+        #endregion
+
+        
+        #region PRIVATE METHODS
+
         private IEnumerator ProcessCameraShake(float amplitude, float frequency, float duration)
         {
             _noise.m_AmplitudeGain = amplitude;
@@ -55,6 +63,8 @@ namespace Game.Managers
             _noise.m_AmplitudeGain = 0f;
             _noise.m_FrequencyGain = 0f;
         }
+
+        #endregion
     }
 
     public enum CameraType

@@ -13,6 +13,8 @@ namespace Game.Managers
         [Inject] private IGameManager gameManager;
 
 
+        #region UNITY EVENTS
+
         private void OnEnable()
         {
             gameManager.OnAfterStateChanged += CheckState;
@@ -23,10 +25,17 @@ namespace Game.Managers
             gameManager.OnAfterStateChanged -= CheckState;
         }
 
+        #endregion
+
+
+        #region PRIVATE METHODS
+
         private void CheckState(GameState state)
         {
             winCanvas.SetActive(state == GameState.Win);
             failedCanvas.SetActive(state == GameState.Fail);
         }
+
+        #endregion
     }
 }

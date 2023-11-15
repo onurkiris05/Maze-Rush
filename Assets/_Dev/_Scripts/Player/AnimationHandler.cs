@@ -10,10 +10,14 @@ namespace Game.Player
         private readonly string _deadTrigger = "Dead";
 
 
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-        }
+        #region UNITY EVENTS
+
+        private void Awake() => _animator = GetComponent<Animator>();
+
+        #endregion
+
+
+        #region PUBLIC METHODS
 
         public void Init(PlayerController player) => _player = player;
 
@@ -26,5 +30,7 @@ namespace Game.Player
         {
             _animator.SetTrigger(_deadTrigger);
         }
+
+        #endregion
     }
 }

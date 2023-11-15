@@ -25,14 +25,6 @@ namespace Game.Traps
 
                 InteractEffect();
 
-                // Get collide position for VFX 
-                if (other.TryGetComponent(out Collider collider))
-                {
-                    var rawHitPos = collider.ClosestPointOnBounds(transform.position);
-                    var hitPos = new Vector3(rawHitPos.x, player.transform.position.y, rawHitPos.z);
-                    VFXSpawner.Instance.PlayVFX("SawTrapHit", hitPos);
-                }
-
                 player.ProcessDefeated();
             }
         }
@@ -40,7 +32,7 @@ namespace Game.Traps
         #endregion
 
 
-        #region PRIVATE METHODS
+        #region PROTECTED METHODS
 
         protected override void Init()
         {

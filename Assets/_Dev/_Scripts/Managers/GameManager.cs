@@ -16,16 +16,6 @@ namespace Game.Managers
         public GameState State { get; private set; } = GameState.Playing;
 
 
-        // #region UNITY EVENTS
-        //
-        // private void Awake()
-        // {
-        //     State = GameState.Playing;
-        // }
-        //
-        // #endregion
-
-
         #region PUBLIC METHODS
 
         public void ChangeState(GameState newState)
@@ -56,11 +46,15 @@ namespace Game.Managers
         #endregion
 
 
+        #region PRIVATE METHODS
+
         private IEnumerator ProcessGameRestart()
         {
             yield return Helpers.BetterWaitForSeconds(4f);
             sceneController.RestartScene();
         }
+
+        #endregion
     }
 
     public enum GameState

@@ -6,6 +6,7 @@ namespace Game.Managers
 {
     public class SceneController : MonoBehaviour, ISceneController
     {
+        
         #region PUBLIC METHODS
 
         public void RestartScene()

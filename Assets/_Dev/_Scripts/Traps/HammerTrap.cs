@@ -11,6 +11,9 @@ namespace Game.Traps
 
         [Space] [Header("Components")]
         [SerializeField] private Transform hammerModel;
+        
+
+        #region UNITY EVENTS
 
         protected override void OnTriggerEnter(Collider other)
         {
@@ -20,22 +23,21 @@ namespace Game.Traps
 
                 InteractEffect();
 
-                // Get collide position for VFX 
-                if (other.TryGetComponent(out Collider collider))
-                {
-                    var rawHitPos = collider.ClosestPointOnBounds(transform.position);
-                    var hitPos = new Vector3(rawHitPos.x, player.transform.position.y, rawHitPos.z);
-                    VFXSpawner.Instance.PlayVFX("SawTrapHit", hitPos);
-                }
-
                 player.ProcessDefeated();
             }
         }
+
+        #endregion
+
+
+        #region PROTECTED METHODS
 
         protected override void Init()
         {
             hammerModel.DOLocalRotate(new Vector3(90f, 0f, 0f), trapSpeed).SetSpeedBased()
                 .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InCubic).SetRelative();
         }
+
+        #endregion
     }
 }
